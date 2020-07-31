@@ -1,12 +1,11 @@
 const express = require('express');
 const httpStatusCodes = require('http-status-codes');
-const router = express.Router();
-// const dbConnection = require('./../../../config/database');
 const dbConnection = require('./../../../config/database/database');
+const router = express.Router();
 
 router.get(`/`, async (request, response) => {
-	const conferenceId = request.params.conferenceId;
-	const seasonId = request.params.seasonId || 54;
+	const conferenceId = request.query.conferenceId;
+	const seasonId = request.query.seasonId || 54;
 	dbConnection.then((connection) => {
 		connection.query(
 			`SELECT * FROM conferences WHERE ConferenceID=${conferenceId} AND SeasonID=${seasonId}`,
