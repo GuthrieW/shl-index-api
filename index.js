@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const shlApi = express();
 const port = 8888;
 require("dotenv").config();
@@ -23,7 +24,13 @@ shlApi.use(`${API_V1}schedule`, scheduleRoute);
 shlApi.use(`${API_V1}games`, gamesRoute);
 shlApi.use(`${API_V1}goalies`, goaliesRoute);
 
-shlApi.get("/", (req, res) => res.send("SHL API V1"));
+shlApi.get("/", (req, res) =>
+  res.sendFile(path.join(__dirname + "/index.html"))
+);
+
+shlApi.get("/swagger.json", (req, res) =>
+  res.sendFile(path.join(__dirname + "/swagger.json"))
+);
 
 shlApi.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)

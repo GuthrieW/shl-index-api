@@ -23,6 +23,7 @@
 		"http-status-codes": "^1.4.0",
 		"mysql": "^2.18.1",
 		"mysql2": "^2.1.0",
+		"redoc": "^2.0.0-rc.36",
 		"ssh2": "^0.8.9"
 	},
 	"devDependencies": {
